@@ -863,9 +863,12 @@ An array of objects each having:
   // --------------------------------------------------------------------------
   const { createServer: createViteServer } = await import('vite');
   const vite = await createViteServer({
-    server: { middlewareMode: true },
-    appType: 'mpa',
-  });
+  server: {
+    middlewareMode: true,
+    allowedHosts: ['farmfusionai-xogt.onrender.com'],
+  },
+  appType: 'mpa',
+});
   app.use(vite.middlewares);
 
   // Fallback for HTML routing
