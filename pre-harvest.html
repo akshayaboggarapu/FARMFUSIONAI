@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pre-Harvest Crop Suitability — FarmFusion AI</title>
+    <meta name="description" content="Pre-harvest crop suitability planning form and intelligent AI recommendations." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="dashboard.html" class="brand-link">
+          <div class="brand-icon">🌱</div>
+          <div class="brand-text">
+            <h1 data-i18n="appName">FarmFusion AI</h1>
+            <p data-i18n="tagline">Smart Farming, Better Harvest, Less Waste.</p>
+          </div>
+        </a>
+
+        <div class="nav-actions">
+          <ul class="nav-menu">
+            <li><a href="dashboard.html" data-i18n="navDashboard">Dashboard</a></li>
+            <li><a href="pre-harvest.html" class="active" data-i18n="navPreHarvest">Pre-Harvest</a></li>
+            <li><a href="post-harvest.html" data-i18n="navPostHarvest">Post-Harvest</a></li>
+          </ul>
+
+          <div class="lang-selector">
+            <span style="font-size: 0.9rem;">🌐</span>
+            <select class="lang-select-input" aria-label="Select Language">
+              <option value="en">English</option>
+              <option value="te">తెలుగు (Telugu)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+          </div>
+
+          <div id="nav-auth-links">
+            <a href="dashboard.html" class="btn btn-secondary btn-sm" data-i18n="navDashboard">Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="section">
+      <!-- Page Title -->
+      <div style="margin-bottom: 2rem;">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-leaf-dark); text-transform: uppercase;">
+          Module 1 of 2
+        </span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--color-forest-dark); margin: 0.25rem 0;" data-i18n="preHarvestTitle">
+          Pre-Harvest Crop Suitability Planning
+        </h2>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;" data-i18n="preHarvestSubtitle">
+          Enter your land and soil parameters to discover the most suitable crops for your upcoming season.
+        </p>
+      </div>
+
+      <!-- Farmer Input Form -->
+      <form id="pre-harvest-form">
+        <div id="pre-form-error" style="display: none; background: #ffebee; color: #c62828; padding: 0.85rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; font-weight: 600;"></div>
+
+        <!-- Section 1: Farm Location & Land Area -->
+        <div class="form-section-card">
+          <div class="form-section-header">
+            <span>📍</span>
+            <h3 data-i18n="farmLocationTitle">1. Farm Location & Land Area</h3>
+          </div>
+
+          <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="pre-state" data-i18n="state">State</label>
+              <input type="text" id="pre-state" class="form-control" placeholder="e.g. Telangana" required />
+            </div>
+
+            <div class="form-group">
+              <label for="pre-district" data-i18n="district">District</label>
+              <input type="text" id="pre-district" class="form-control" placeholder="e.g. Warangal" required />
+            </div>
+
+            <div class="form-group">
+              <label for="pre-village" data-i18n="village">Village or Location</label>
+              <input type="text" id="pre-village" class="form-control" placeholder="e.g. Narsampet" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pre-land-area" data-i18n="landArea">Land Area</label>
+              <input type="number" id="pre-land-area" class="form-control" placeholder="e.g. 3.5" step="0.1" min="0.1" required value="3.5" />
+            </div>
+
+            <div class="form-group">
+              <label for="pre-land-unit" data-i18n="landUnit">Land Unit</label>
+              <select id="pre-land-unit" class="form-control">
+                <option value="acres" data-i18n="acres">Acres</option>
+                <option value="hectares" data-i18n="hectares">Hectares</option>
+                <option value="guntas" data-i18n="guntas">Guntas</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Soil Profile & Fertility -->
+        <div class="form-section-card">
+          <div class="form-section-header">
+            <span>🧪</span>
+            <h3 data-i18n="soilProfileTitle">2. Soil Profile & Fertility</h3>
+          </div>
+
+          <div class="form-row" style="margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="pre-soil-type" data-i18n="soilType">Soil Type</label>
+              <select id="pre-soil-type" class="form-control" required>
+                <option value="Black">Black Soil (Regur)</option>
+                <option value="Red">Red Soil</option>
+                <option value="Alluvial">Alluvial Soil</option>
+                <option value="Loamy">Loamy Soil</option>
+                <option value="Sandy">Sandy Soil</option>
+                <option value="Clay">Clay Soil</option>
+                <option value="Laterite">Laterite Soil</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pre-soil-fertility" data-i18n="soilFertility">Soil Fertility Level</label>
+              <select id="pre-soil-fertility" class="form-control">
+                <option value="High">High Fertility (Rich Organic Carbon)</option>
+                <option value="Medium" selected>Medium Fertility (Moderate Nutrients)</option>
+                <option value="Low">Low Fertility (Nutrient Depleted)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+            <div class="form-group">
+              <label for="pre-soil-ph" data-i18n="soilPh">Soil pH (Optional)</label>
+              <input type="number" id="pre-soil-ph" class="form-control" placeholder="e.g. 6.8" step="0.1" min="3" max="10" />
+            </div>
+
+            <div class="form-group">
+              <label for="pre-n">Nitrogen (N kg/ha)</label>
+              <input type="number" id="pre-n" class="form-control" placeholder="Optional" />
+            </div>
+
+            <div class="form-group">
+              <label for="pre-p">Phosphorus (P kg/ha)</label>
+              <input type="number" id="pre-p" class="form-control" placeholder="Optional" />
+            </div>
+
+            <div class="form-group">
+              <label for="pre-k">Potassium (K kg/ha)</label>
+              <input type="number" id="pre-k" class="form-control" placeholder="Optional" />
+            </div>
+          </div>
+          <small style="color: var(--color-text-light);">* Unknown soil test values can safely be skipped.</small>
+        </div>
+
+        <!-- Section 3: Season, Rotation & Water Infrastructure -->
+        <div class="form-section-card">
+          <div class="form-section-header">
+            <span>🌦️</span>
+            <h3 data-i18n="seasonWaterTitle">3. Season, Rotation & Water Infrastructure</h3>
+          </div>
+
+          <div class="form-row" style="margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="pre-season" data-i18n="season">Current / Intended Season</label>
+              <select id="pre-season" class="form-control" required>
+                <option value="Kharif" selected>Kharif Season (Monsoon / June - Oct)</option>
+                <option value="Rabi">Rabi Season (Winter / Nov - March)</option>
+                <option value="Zaid">Zaid Season (Summer / April - May)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pre-water" data-i18n="waterAvailability">Water Availability & Irrigation</label>
+              <select id="pre-water" class="form-control" required>
+                <option value="Borewell" selected>Borewell Irrigation (Perennial)</option>
+                <option value="Canal">Canal Water (Scheduled Supply)</option>
+                <option value="Drip">Drip Irrigation System (Micro-irrigation)</option>
+                <option value="Sprinkler">Sprinkler Irrigation</option>
+                <option value="Rainfed">Rainfed Only (Monsoon Dependent)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="pre-previous-crop" data-i18n="previousCrop">Previous Crop Cultivated</label>
+              <input type="text" id="pre-previous-crop" class="form-control" placeholder="e.g. Pulses / Green Gram or Paddy" />
+            </div>
+
+            <div class="form-group">
+              <label for="pre-previous-yield" data-i18n="previousYield">Previous Season's Yield (Optional)</label>
+              <input type="text" id="pre-previous-yield" class="form-control" placeholder="e.g. 18 Quintals/Acre" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pre-weather" data-i18n="weatherCondition">Weather Condition / Climate</label>
+              <select id="pre-weather" class="form-control">
+                <option value="Sunny">Sunny & Warm</option>
+                <option value="Moderate rain">Moderate Monsoon Rainfall</option>
+                <option value="Heavy rain">High Rainfall / Humid</option>
+                <option value="Drought-prone">Dry / Arid / Semi-Arid</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pre-budget" data-i18n="cultivationBudget">Available Cultivation Budget (₹, Optional)</label>
+              <input type="number" id="pre-budget" class="form-control" placeholder="e.g. 45000" />
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.5rem;">
+          <button type="submit" id="analyze-crops-btn" class="btn btn-primary btn-lg" style="min-width: 260px;" data-i18n="analyzeBtn">
+            Analyze & Recommend Suitable Crops
+          </button>
+        </div>
+      </form>
+
+      <!-- Recommendations Results Section -->
+      <div id="results-wrapper" class="recommendations-wrapper" style="display: none;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-bottom: 2px solid var(--color-border); padding-bottom: 0.75rem;">
+          <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--color-forest-dark);" data-i18n="recommendationsTitle">
+            Suitable Crop Recommendations
+          </h3>
+          <div id="engine-badge"></div>
+        </div>
+
+        <div id="recommendations-container" class="rec-cards-grid"></div>
+
+        <!-- Post Selection CTA -->
+        <div id="post-select-cta" style="display: none;"></div>
+      </div>
+
+      <!-- Saved Crops Summary -->
+      <div style="margin-top: 3.5rem; background: var(--color-surface-card); border-radius: var(--radius-xl); border: 1px solid var(--color-border); padding: 1.75rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+          <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--color-forest-dark);" data-i18n="activeCrops">
+            Active & Saved Crop Cycles
+          </h4>
+          <span style="font-size: 0.8rem; color: var(--color-text-muted);">
+            Saved in MySQL Database
+          </span>
+        </div>
+        <div id="pre-saved-crops-list"></div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>FarmFusion AI — Smart Farming, Better Harvest, Less Waste.</p>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmFusion AI — Smart Agriculture Website</title>
+    <meta name="description" content="Smart farming web application connecting pre-harvest crop suitability recommendations with post-harvest crop grading, storage, spoilage prevention, and marketing." />
+    <meta property="og:title" content="FarmFusion AI — Smart Agriculture Website" />
+    <meta property="og:description" content="Smart farming web application connecting pre-harvest crop suitability recommendations with post-harvest crop grading, storage, spoilage prevention, and marketing." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">🌱</div>
+          <div class="brand-text">
+            <h1 data-i18n="appName">FarmFusion AI</h1>
+            <p data-i18n="tagline">Smart Farming, Better Harvest, Less Waste.</p>
+          </div>
+        </a>
+
+        <div class="nav-actions">
+          <ul class="nav-menu">
+            <li><a href="index.html" class="active" data-i18n="navHome">Home</a></li>
+            <li><a href="pre-harvest.html" data-i18n="navPreHarvest">Pre-Harvest</a></li>
+            <li><a href="post-harvest.html" data-i18n="navPostHarvest">Post-Harvest</a></li>
+            <li><a href="dashboard.html" data-i18n="navDashboard">Dashboard</a></li>
+          </ul>
+
+          <div class="lang-selector">
+            <span style="font-size: 0.9rem;">🌐</span>
+            <select class="lang-select-input" aria-label="Select Preferred Language">
+              <option value="en">English</option>
+              <option value="te">తెలుగు (Telugu)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+          </div>
+
+          <div id="nav-auth-links" style="display: flex; align-items: center; gap: 0.5rem;">
+            <a href="login.html" class="btn btn-secondary btn-sm" data-i18n="navLogin">Login</a>
+            <a href="register.html" class="btn btn-primary btn-sm" data-i18n="navRegister">Register</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-badge" data-i18n="tagline">Smart Farming, Better Harvest, Less Waste.</span>
+        <h2 class="hero-title" data-i18n="heroTitle">Intelligent Agriculture for Indian Farmers</h2>
+        <p class="hero-desc" data-i18n="heroDesc">
+          Make informed crop choices before sowing with soil & seasonal AI recommendations, and protect your harvest with crop-specific grading, storage, and spoilage prevention.
+        </p>
+        <div class="hero-actions">
+          <a href="pre-harvest.html" class="btn btn-accent btn-lg" data-i18n="explorePreHarvest">
+            Start Pre-Harvest Planning
+          </a>
+          <a href="post-harvest.html" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.9); border: none;" data-i18n="explorePostHarvest">
+            Open Post-Harvest Guidance
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Two Modules Overview -->
+    <main class="section">
+      <div class="section-header">
+        <h2 data-i18n="subtitle">Connecting Pre-Harvest Crop Planning with Post-Harvest Quality & Market Success</h2>
+        <p>A strongly connected, two-module agricultural decision system powered by soil science and AI.</p>
+      </div>
+
+      <div class="modules-grid">
+        <!-- Pre-Harvest Card -->
+        <article class="module-card">
+          <div class="module-card-img" style="background-image: url('https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80');">
+            <span class="module-card-badge">Module 1</span>
+          </div>
+          <div class="module-card-body">
+            <h3 data-i18n="preHarvestCardTitle">1. Pre-Harvest Module</h3>
+            <p data-i18n="preHarvestCardDesc">
+              Select the most suitable crop before cultivation based on your land area, soil profile, previous crop rotation, water availability, and season.
+            </p>
+            <ul style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; padding-left: 1.25rem;">
+              <li>Soil texture, fertility & pH analysis</li>
+              <li>Season & irrigation suitability scoring</li>
+              <li>Detailed crop duration & yield estimation</li>
+              <li>One-click crop selection saved directly to SQL database</li>
+            </ul>
+            <a href="pre-harvest.html" class="btn btn-primary" data-i18n="explorePreHarvest">
+              Start Pre-Harvest Planning &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Post-Harvest Card -->
+        <article class="module-card">
+          <div class="module-card-img" style="background-image: url('https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=800&q=80');">
+            <span class="module-card-badge">Module 2</span>
+          </div>
+          <div class="module-card-body">
+            <h3 data-i18n="postHarvestCardTitle">2. Post-Harvest Module</h3>
+            <p data-i18n="postHarvestCardDesc">
+              Retrieve your exact cultivated crop record to get tailored quality grading, optimal storage parameters, spoilage risk alerts, and market guidance.
+            </p>
+            <ul style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; padding-left: 1.25rem;">
+              <li>Automatic pre-to-post harvest database connection</li>
+              <li>Crop-specific Grade A, B, and C parameters</li>
+              <li>Optimal temperature, humidity & packaging instructions</li>
+              <li>Transparent spoilage risk calculation & Mandi selling prices</li>
+            </ul>
+            <a href="post-harvest.html" class="btn btn-primary" data-i18n="explorePostHarvest">
+              Open Post-Harvest Guidance &rarr;
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Feature Benefits Row -->
+      <div class="features-row">
+        <div class="feature-box">
+          <div class="feature-box-icon">🔗</div>
+          <h4 data-i18n="whyConnected">Strong Database Connection</h4>
+          <p data-i18n="whyConnectedDesc">
+            Your Pre-Harvest crop cycle automatically connects to Post-Harvest without re-entering data.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-box-icon">🌾</div>
+          <h4 data-i18n="whyAgronomy">Agronomic & AI Precision</h4>
+          <p data-i18n="whyAgronomyDesc">
+            Driven by verified soil science, agro-climatic zones, and intelligent AI models.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-box-icon">🗣️</div>
+          <h4 data-i18n="whyMultilingual">Multilingual for Every Farmer</h4>
+          <p data-i18n="whyMultilingualDesc">
+            Fully accessible in English, Telugu (తెలుగు), and Hindi (हिन्दी).
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        <strong>FarmFusion AI</strong> — Smart Farming, Better Harvest, Less Waste.<br />
+        Built for Indian Agricultural Sustainability. English • తెలుగు • हिन्दी.
+      </p>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

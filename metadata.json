@@ -1,0 +1,6 @@
+{
+  "name": "FarmFusion AI",
+  "description": "Smart farming web application connecting pre-harvest crop suitability recommendations with post-harvest crop grading, storage, spoilage prevention, and marketing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

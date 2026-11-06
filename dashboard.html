@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farmer Dashboard — FarmFusion AI</title>
+    <meta name="description" content="Farmer dashboard to manage pre-harvest crop selection and post-harvest crop cycles." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="dashboard.html" class="brand-link">
+          <div class="brand-icon">🌱</div>
+          <div class="brand-text">
+            <h1 data-i18n="appName">FarmFusion AI</h1>
+            <p data-i18n="tagline">Smart Farming, Better Harvest, Less Waste.</p>
+          </div>
+        </a>
+
+        <div class="nav-actions">
+          <ul class="nav-menu">
+            <li><a href="dashboard.html" class="active" data-i18n="navDashboard">Dashboard</a></li>
+            <li><a href="pre-harvest.html" data-i18n="navPreHarvest">Pre-Harvest</a></li>
+            <li><a href="post-harvest.html" data-i18n="navPostHarvest">Post-Harvest</a></li>
+          </ul>
+
+          <div class="lang-selector">
+            <span style="font-size: 0.9rem;">🌐</span>
+            <select class="lang-select-input" aria-label="Select Language">
+              <option value="en">English</option>
+              <option value="te">తెలుగు (Telugu)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+          </div>
+
+          <div id="nav-auth-links">
+            <button id="logout-btn" class="btn btn-outline btn-sm" data-i18n="navLogout">Logout</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Farmer Welcome Header -->
+    <section class="dashboard-header">
+      <div class="dashboard-header-inner">
+        <div class="farmer-badge">
+          <div class="farmer-avatar">🌾</div>
+          <div class="farmer-info">
+            <span style="text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.05em; color: var(--color-leaf-subtle);" data-i18n="welcome">
+              Welcome
+            </span>
+            <h2 id="dashboard-farmer-name">Farmer</h2>
+            <p id="dashboard-farmer-loc">Farmland Location</p>
+          </div>
+        </div>
+
+        <div>
+          <a href="pre-harvest.html" class="btn btn-accent" data-i18n="startPreHarvestBtn">
+            + Plan New Pre-Harvest Crop
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Dashboard Container -->
+    <main class="section" style="padding-top: 0;">
+      <!-- Two Module Cards -->
+      <div class="modules-grid" style="margin-bottom: 2.5rem;">
+        <!-- Pre-Harvest Card -->
+        <article class="module-card">
+          <div class="module-card-img" style="background-image: url('https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80');">
+            <span class="module-card-badge">Module 1</span>
+          </div>
+          <div class="module-card-body">
+            <h3 data-i18n="preHarvestCardTitle">1. Pre-Harvest Module</h3>
+            <p data-i18n="preHarvestCardDesc">
+              Analyze soil profile, water availability, and season to find high-yield crops before sowing.
+            </p>
+            <a href="pre-harvest.html" class="btn btn-primary" style="margin-top: auto;" data-i18n="startPreHarvestBtn">
+              Open Pre-Harvest Planning &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Post-Harvest Card -->
+        <article class="module-card">
+          <div class="module-card-img" style="background-image: url('https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=800&q=80');">
+            <span class="module-card-badge">Module 2</span>
+          </div>
+          <div class="module-card-body">
+            <h3 data-i18n="postHarvestCardTitle">2. Post-Harvest Module</h3>
+            <p data-i18n="postHarvestCardDesc">
+              Manage your cultivated crops with quality grading, storage parameters, spoilage alerts, and market pricing.
+            </p>
+            <a href="post-harvest.html" class="btn btn-primary" style="margin-top: auto;" data-i18n="viewPostHarvestBtn">
+              Open Post-Harvest Guidance &rarr;
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Active or Selected Crop Information Section -->
+      <section>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+          <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--color-forest-dark);" data-i18n="activeCrops">
+            Active & Saved Crop Cycles
+          </h3>
+          <span style="font-size: 0.85rem; color: var(--color-text-muted);">
+            Connected to SQL Database
+          </span>
+        </div>
+
+        <div id="farmer-crops-list">
+          <div style="text-align: center; padding: 2.5rem; color: var(--color-text-muted);">
+            <span class="spinner" style="border-top-color: var(--color-forest-dark);"></span> Loading saved crops...
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>FarmFusion AI — Smart Farming, Better Harvest, Less Waste.</p>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

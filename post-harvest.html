@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post-Harvest Management — FarmFusion AI</title>
+    <meta name="description" content="Crop-specific grading, storage recommendations, spoilage prevention, and market intelligence for cultivated crops." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="dashboard.html" class="brand-link">
+          <div class="brand-icon">🌱</div>
+          <div class="brand-text">
+            <h1 data-i18n="appName">FarmFusion AI</h1>
+            <p data-i18n="tagline">Smart Farming, Better Harvest, Less Waste.</p>
+          </div>
+        </a>
+
+        <div class="nav-actions">
+          <ul class="nav-menu">
+            <li><a href="dashboard.html" data-i18n="navDashboard">Dashboard</a></li>
+            <li><a href="pre-harvest.html" data-i18n="navPreHarvest">Pre-Harvest</a></li>
+            <li><a href="post-harvest.html" class="active" data-i18n="navPostHarvest">Post-Harvest</a></li>
+          </ul>
+
+          <div class="lang-selector">
+            <span style="font-size: 0.9rem;">🌐</span>
+            <select class="lang-select-input" aria-label="Select Language">
+              <option value="en">English</option>
+              <option value="te">తెలుగు (Telugu)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+          </div>
+
+          <div id="nav-auth-links">
+            <a href="dashboard.html" class="btn btn-secondary btn-sm" data-i18n="navDashboard">Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="section">
+      <!-- Page Title -->
+      <div style="margin-bottom: 2rem;">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-leaf-dark); text-transform: uppercase;">
+          Module 2 of 2
+        </span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--color-forest-dark); margin: 0.25rem 0;" data-i18n="postHarvestTitle">
+          Post-Harvest Management & Quality Guidance
+        </h2>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;" data-i18n="postHarvestSubtitle">
+          Crop-specific grading, storage, spoilage prevention, and market intelligence for your harvested produce.
+        </p>
+      </div>
+
+      <!-- Step 1: Select Cultivated Crop -->
+      <section class="form-section-card">
+        <div class="form-section-header">
+          <span>🌾</span>
+          <h3 data-i18n="step1Title">Step 1: Select Cultivated Crop</h3>
+        </div>
+        <p style="color: var(--color-text-muted); font-size: 0.92rem; margin-bottom: 1.25rem;">
+          Select one of your existing crop cycles cultivated through Pre-Harvest. Your land, soil, and sowing details are retrieved automatically from the database.
+        </p>
+
+        <div class="form-group">
+          <label for="post-cycle-select" data-i18n="selectCyclePrompt">Choose from your active cultivated crop cycles:</label>
+          <select id="post-cycle-select" class="form-control" style="font-size: 1.05rem; font-weight: 600; padding: 0.85rem 1rem;">
+            <option value="">Loading your saved crops from database...</option>
+          </select>
+        </div>
+
+        <!-- Banner showing auto-populated pre-harvest data -->
+        <div id="selected-crop-banner" style="display: none; background: var(--color-surface-alt); padding: 1.25rem; border-radius: var(--radius-lg); border: 1.5px solid var(--color-leaf-base); margin-top: 1.25rem;"></div>
+      </section>
+
+      <!-- Step 2: Confirm Harvesting Form -->
+      <form id="harvest-confirm-form" class="form-section-card" style="display: none;">
+        <div class="form-section-header">
+          <span>⚖️</span>
+          <h3 data-i18n="step2Title">Step 2: Confirm Harvest Details</h3>
+        </div>
+        <p style="color: var(--color-text-muted); font-size: 0.92rem; margin-bottom: 1.25rem;">
+          Enter the minimal necessary harvest measurements to generate tailored grading and storage recommendations.
+        </p>
+
+        <div class="form-row" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label for="harvest-date" data-i18n="actualHarvestDate">Actual Harvest Date</label>
+            <input type="date" id="harvest-date" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label for="harvest-qty" data-i18n="harvestedQty">Actual Harvested Quantity</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="number" id="harvest-qty" class="form-control" placeholder="e.g. 45" step="0.5" min="0.5" required value="45" />
+              <select id="harvest-unit" class="form-control" style="width: 140px;">
+                <option value="Quintals" selected>Quintals</option>
+                <option value="Tonnes">Tonnes</option>
+                <option value="Kg">Kg</option>
+                <option value="Crates">Crates</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label for="harvest-condition" data-i18n="cropCondition">Current Crop Condition at Harvest</label>
+            <select id="harvest-condition" class="form-control" required>
+              <option value="Excellent">Fresh & Excellent (Firm, uniform maturity)</option>
+              <option value="Good" selected>Good Condition (Standard commercial soundness)</option>
+              <option value="Fair">Fair Condition (Some softness or uneven ripeness)</option>
+              <option value="Poor">Poor Condition (High moisture / accelerated softening)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="harvest-damage" data-i18n="visibleDamage">Visible Damage / Blemishes</label>
+            <select id="harvest-damage" class="form-control" required>
+              <option value="None" selected>None (Clean, pristine skins/grains)</option>
+              <option value="Minor bruising">Minor Bruising or Abrasions (&lt;5% surface)</option>
+              <option value="Pest spots">Pest Spots / Surface Punctures</option>
+              <option value="Moisture damage">Moisture Damage / Mold Symptoms</option>
+              <option value="Severe">Severe Cuts, Cracking, or Deep Decay</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label for="harvest-storage-duration" data-i18n="storageDuration">Intended Storage Duration</label>
+            <select id="harvest-storage-duration" class="form-control" required>
+              <option value="<3 days">Immediate Sale (&lt; 3 days)</option>
+              <option value="1-2 weeks" selected>Short Holding (1 - 2 weeks)</option>
+              <option value="1-3 months">Medium Term (1 - 3 months)</option>
+              <option value="3-6 months">Long Term Warehousing (3 - 6 months)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="harvest-facility" data-i18n="storageFacility">Available Storage Facility</label>
+            <select id="harvest-facility" class="form-control" required>
+              <option value="Well-ventilated room" selected>Well-Ventilated Covered Room</option>
+              <option value="Cold storage">Certified Cold Storage / Reefer Warehouse</option>
+              <option value="Traditional granary">Traditional Granary / Kuthir</option>
+              <option value="Open shed">Open Farm Shed / Porch</option>
+              <option value="Silo">Hermetic Silo / Metal Bin</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="harvest-market" data-i18n="intendedMarket">Intended Selling Location or Market</label>
+          <input type="text" id="harvest-market" class="form-control" placeholder="e.g. Warangal APMC Mandi, Wholesale Market, or Farmgate Trader" value="Warangal APMC Mandi" />
+        </div>
+
+        <!-- Optional Photo Upload for Visual Assessment -->
+        <div style="background: var(--color-surface-alt); padding: 1.25rem; border-radius: var(--radius-md); border: 1px dashed var(--color-border); margin: 1.5rem 0;">
+          <label style="font-weight: 700; color: var(--color-forest-dark); margin-bottom: 0.35rem; display: block;" data-i18n="photoAssessmentTitle">
+            Visual Crop Assessment (Optional Upload)
+          </label>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.75rem;" data-i18n="photoUploadDesc">
+            Upload a photo of your harvested produce for preliminary visual texture assessment (non-certified).
+          </p>
+          <input type="file" id="crop-photo-upload" accept="image/*" class="form-control" style="background: #fff;" />
+          <div id="crop-photo-preview"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.5rem;">
+          <button type="submit" id="submit-harvest-btn" class="btn btn-primary btn-lg" style="min-width: 260px;" data-i18n="logHarvestBtn">
+            Generate Quality, Storage & Market Assessment
+          </button>
+        </div>
+      </form>
+
+      <!-- Post-Harvest Outputs (Steps 3 to 7) -->
+      <div id="post-assessment-wrapper" style="display: none;">
+        <!-- Step 5 Alert Banner First for High Visibility -->
+        <section class="assessment-box">
+          <div class="assessment-title">
+            <span>🚨</span>
+            <span data-i18n="step5SpoilageTitle">Step 5: Spoilage-Risk Assessment & Alert</span>
+          </div>
+          <div id="spoilage-alert-container"></div>
+        </section>
+
+        <!-- Step 3: Crop-Specific Grading -->
+        <section class="assessment-box">
+          <div class="assessment-title">
+            <span>🏷️</span>
+            <span data-i18n="step3GradingTitle">Step 3: Crop-Specific Grading Suggestions</span>
+          </div>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
+            Quality breakdown based on the specific physiological characteristics of your cultivated crop:
+          </p>
+          <div id="grading-container"></div>
+        </section>
+
+        <!-- Step 4: Crop-Specific Storage Recommendations -->
+        <section class="assessment-box">
+          <div class="assessment-title">
+            <span>❄️</span>
+            <span data-i18n="step4StorageTitle">Step 4: Crop-Specific Storage Recommendations</span>
+          </div>
+          <div id="storage-container"></div>
+        </section>
+
+        <!-- Step 6: Transportation Suggestions -->
+        <section class="assessment-box">
+          <div class="assessment-title">
+            <span>🚛</span>
+            <span data-i18n="step6TransportTitle">Step 6: Transportation Suggestions</span>
+          </div>
+          <div id="transport-container"></div>
+        </section>
+
+        <!-- Step 7: Market & Selling Guidance -->
+        <section class="assessment-box">
+          <div class="assessment-title">
+            <span>📈</span>
+            <span data-i18n="step7MarketTitle">Step 7: Market & Selling Guidance</span>
+          </div>
+          <div id="market-container"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>FarmFusion AI — Smart Farming, Better Harvest, Less Waste.</p>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
